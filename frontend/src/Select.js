@@ -19,6 +19,7 @@ class Rectangle
   this.rect=document.createElement('div');
   }
   showRect() {
+    console.log('some ');
     this.rect.style.display = 'block';
     this.rect.style.position = 'absolute';
     this.rect.style.left =(this.x0-380) + 'px';
