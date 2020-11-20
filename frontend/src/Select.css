@@ -1,0 +1,162 @@
+#editat
+{
+    position:absolute;
+    width: 25%;
+    height: 100%;
+    left: 75%;
+    background-color: white;
+}
+#edited-images
+{
+    border:7px solid black;
+    border-radius: 13px;
+    background-color: brown;
+    height: 73%;
+    margin: 7px;
+}
+#download
+{
+    padding-left: 31%;
+    text-align: center;
+    display: flex;
+    font-size: 100%;
+    flex-direction: row;
+    border:7px solid black;
+    border-radius: 13px;
+    width: 95%;
+   
+    background-color:green;
+    height: 8%;
+    margin: 10px;
+}
+#submit
+{
+    border:7px solid black;
+    border-radius: 13px;
+    width: 95%;
+    font-size: 100%;
+    background-color:green;
+    height: 9%;
+    margin: 10px;
+}
+#editare
+{
+    display: table-column;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 25%;
+    background-color:white;
+}
+#image
+{
+    border:7px solid black;
+    border-radius: 13px;
+    /* background-color:green; */
+    height: 85%;
+    width: 100%;
+    margin-top: 10px;
+}
+#row-buttons
+{
+    border:7px solid black;
+    border-radius: 13px;
+    margin-top: 6px;
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: black;
+}
+#done
+{
+    width: 33%;
+    border-left: 7px solid black;
+    font-size: 100%;
+    background-color:green;
+}
+#reset-button
+{
+    font-size: 100%;
+    width: 33%;
+    height: 100%;
+    background-color: brown;
+}
+#zoom
+{   
+    font-size: 100%;
+    border-left: 7px solid black;
+    height: 100%;
+    width: 33%;
+    background-color:green;
+}
+#needitat
+{
+    display: table-column;
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    left: 0;
+    background-color:white;
+}
+#back_button
+{
+    border:7px solid black;
+    border-radius: 13px;
+    
+    height: 7%;
+    width: 95%;
+    font-size: 100%;
+    background-color:green;
+    margin: 10px;
+}
+#tools
+{
+    border:7px solid black;
+    border-radius: 13px;
+    background-color:white;
+    height: 23%;
+ 
+    margin: 10px;
+}
+#unedited_images .slide
+{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 220px;
+}
+#good-tool
+{
+    padding-top: 5%;
+    font-size: 150%;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    background-color: green;
+}
+#bad-tool
+{
+    padding-top: 5%;
+    font-size: 150%;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    background-color: red;
+}
+#unedited_images
+{
+    border:7px solid black;
+    border-radius: 13px;
+    background-color: brown;
+    height: 60%;
+    margin: 10px;
+    overflow: auto;
+}
+#select-screen
+{
+
+}
+canvas {
+    cursor: crosshair;
+}
