@@ -77,7 +77,7 @@ export default class Select extends React.Component {
   }
   crop_green()
   {
-    console.log('se cropeaza');
+
     this.rect.push(new Rectangle('green'));
     this.counter++;
     var div = document.getElementById('image');
@@ -100,6 +100,17 @@ export default class Select extends React.Component {
       img.removeAttribute('draggable');
 
     }
+    doneImage()
+    {
+      console.log(this.rect);
+      console.log(this.counter);
+    }
+    reset()
+    {
+      let i=this.rect.length;
+      for(let j=0;j<i;j++)
+          this.rect.pop();
+    }
     drag(ev) {
       ev.dataTransfer.setData("text", ev.target.id);
     }
@@ -114,6 +125,7 @@ export default class Select extends React.Component {
           });
         }) ;
 
+  
 
     }
     render() {
@@ -138,7 +150,7 @@ export default class Select extends React.Component {
            <div id="image" onDrop={(e)=>this.drop(e)} onDragOver={(e)=>this.allowDrop(e)}>
              </div>
              <div id="row-buttons">
-               <div id="reset-button" class="btn btn-danger">
+               <div id="reset-button" class="btn btn-danger" onClick={this.reset()}>
                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
 </svg>
@@ -150,7 +162,7 @@ export default class Select extends React.Component {
   <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
 </svg>Zoom
                   </div>
-                  <div id="done" class="btn btn-success"> Done</div>
+                  <div id="done" class="btn btn-success" onClick={this.doneImage()}> Done</div>
                </div>
             </div>
             <div id="editat">
