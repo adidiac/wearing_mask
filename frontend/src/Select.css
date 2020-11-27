@@ -11,23 +11,8 @@
     border:7px solid black;
     border-radius: 13px;
     background-color: brown;
-    height: 73%;
+    height: 83%;
     margin: 7px;
-}
-#download
-{
-    padding-left: 31%;
-    text-align: center;
-    display: flex;
-    font-size: 100%;
-    flex-direction: row;
-    border:7px solid black;
-    border-radius: 13px;
-    width: 95%;
-   
-    background-color:green;
-    height: 8%;
-    margin: 10px;
 }
 #submit
 {
@@ -156,7 +141,4 @@
 #select-screen
 {
 
-}
-canvas {
-    cursor: crosshair;
 }
