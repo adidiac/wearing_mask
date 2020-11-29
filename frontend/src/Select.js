@@ -49,12 +49,14 @@ export default class Select extends React.Component {
   callAPI() {
     let send=[];
     let edited_length=this.state.list_edited.length;
+    var offsetLeft=document.getElementById("image").getBoundingClientRect().left;
+    var offsetTop=document.getElementById("image").getBoundingClientRect().top;
     for(let i=0;i<edited_length;i++)
     {
       let v=this.state.list_edited[i].props.list;
       for(let j=0;j<v.length;j++)
         {
-          send.push({picture:v[j].image,x0:v[j].x0,x1:v[j].x1,y0:v[j].y0,y1:v[j].y1,type:v[j].type});
+          send.push({picture:v[j].image,x0:v[j].x0-offsetLeft,x1:v[j].x1-offsetLeft,y0:v[j].y0-offsetTop,y1:v[j].y1-offsetTop,type:v[j].type});
         }
     }
     console.log(send);
@@ -119,10 +121,11 @@ export default class Select extends React.Component {
       {
         console.log(j+"  ,"+i);
         var elem=this.rect[j].rect;
-          document.getElementById("image").removeChild(elem);
+        document.getElementById("image").removeChild(elem);
       }
       for(let j=0;j<i;j++)
       {
+        
         this.rect.pop();
       }
       let image=document.getElementById('image').children[0];
