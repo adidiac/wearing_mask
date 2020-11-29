@@ -25,6 +25,8 @@ export default class Select extends React.Component {
       this.crop_green=this.crop_green.bind(this);
       this.doneImage=this.doneImage.bind(this);
       this.reset=this.reset.bind(this);
+      this.go_back=this.go_back.bind(this);
+      this.callAPI=this.callAPI.bind(this)
     }
     mouseup(e) {
       this.grab=false;
@@ -44,6 +46,30 @@ export default class Select extends React.Component {
           this.rect[this.rect.length-1].showRect();
       }
   }
+  callAPI() {
+    let send=[];
+    let edited_length=this.state.list_edited.length;
+    for(let i=0;i<edited_length;i++)
+    {
+      let v=this.state.list_edited[i].props.list;
+      for(let j=0;j<v.length;j++)
+        {
+          send.push({picture:v[j].image,x0:v[j].x0,x1:v[j].x1,y0:v[j].y0,y1:v[j].y1,type:v[j].type});
+        }
+    }
+    console.log(send);
+    fetch("http://localhost:9000/api",
+    {method:'POST',
+    headers:{'Content-type':'application/json'},
+    body:JSON.stringify({message:send})})
+        .then(res => res.text())
+        .then(res => 
+        {
+          console.log(res);
+          history.push('/final');
+          history.go();
+        });
+}
   crop_red()
   {
     this.rect.push(new Rectangle('red',"incorrect"));
@@ -102,6 +128,11 @@ export default class Select extends React.Component {
       let image=document.getElementById('image').children[0];
       document.getElementById("image").removeChild(image);
     }
+    go_back()
+    {
+      history.push('/');
+      history.go();
+    }
     reset()
     {
       console.log("something good");
@@ -131,13 +162,13 @@ export default class Select extends React.Component {
           });
         }) ;
 
-  
+    
 
     }
     render() {
       return <div id="select-screen">
          <div id="needitat">
-           <div id="back_button" class="btn btn-success">
+           <div id="back_button" class="btn btn-success" onClick={this.go_back}>
            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
 </svg> Go back
@@ -177,7 +208,7 @@ export default class Select extends React.Component {
                   this.state.list_edited
                 }
                 </div>
-                  <div id="submit" class="btn btn-success">
+                  <div id="submit" class="btn btn-success" onClick={this.callAPI}>
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-play-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
 </svg>

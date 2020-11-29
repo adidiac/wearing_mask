@@ -8,10 +8,16 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick=this.handleClick.bind(this);
+    this.go_api=this.go_api.bind(this);
   }
   handleClick()
   {
     history.push('/select');
+    history.go();
+  }
+  go_api()
+  {
+    history.push('/api');
     history.go();
   }
   render() {
@@ -21,7 +27,7 @@ export default class Home extends React.Component {
            <img id="image_home" src={people} ></img>
            <h1 id="home_title">Home</h1>
            </div>
-            <div id="api" class="right">
+            <div id="api" class="right" onClick={this.go_api}>
             <img id="image_api" src={api}></img>
             <h1 id="api_title">API</h1>
             </div>

@@ -1,0 +1,27 @@
+
+body
+{
+    background-color:grey;
+}
+.card
+{
+    background-color: darkcyan;
+    border-radius: 30px;
+    height: 30%;
+    top:33%;
+    position: absolute;
+    left:31%;
+    padding: 2%;
+}
+#final_button
+{
+    color: black;
+    background-color: cyan;
+    margin-top: 6%;
+    margin-left: 40%;
+}
+#final_text
+{
+    color:white;
+    font-family:"aldin";
+}

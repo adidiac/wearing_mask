@@ -3,7 +3,8 @@ import React from 'react';
 import Home from './Home';
 import history from './history';
 import Select from './Select'
-import Example from "./Example";
+import API from './API'
+import Final from "./Final";
 function App() {
   return (
     <div className="App">
@@ -11,6 +12,8 @@ function App() {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/select" exact component={Select} />
+                    <Route path="/final" exact component={Final} />
+                    <Route path="/api" exact component={API} />
                 </Switch>
         </Router>
     </div>
