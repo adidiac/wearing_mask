@@ -13,6 +13,7 @@
     background-color: brown;
     height: 83%;
     margin: 7px;
+    overflow: auto;
 }
 #submit
 {

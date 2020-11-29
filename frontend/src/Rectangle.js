@@ -1,13 +1,14 @@
 
 export default class Rectangle
 {
-  constructor(color){
+  constructor(color,type){
   this.x0=0;
   this.y0=0;
   this.x1=0;
   this.y1=0;
   this.image='';
   this.color=color;
+  this.type=type;
   this.rect=document.createElement('div');
   }
   showRect() {

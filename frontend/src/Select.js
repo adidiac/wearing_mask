@@ -6,13 +6,14 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import $ from 'jquery'
 import Rectangle from './Rectangle'
-
+import Done_Image from './Done_Image'
 
 export default class Select extends React.Component {
     constructor(props) {
       super(props);
       this.state={
         list:[],
+        list_edited:[]
       }
       this.rect=[]
       this.counter=0;
@@ -45,9 +46,10 @@ export default class Select extends React.Component {
   }
   crop_red()
   {
-    this.rect.push(new Rectangle('red'));
+    this.rect.push(new Rectangle('red',"incorrect"));
     this.counter++;
     var div = document.getElementById('image');
+    this.rect[this.rect.length-1].image=div.children[0].getAttribute('src');
     div.appendChild(this.rect[this.rect.length-1].rect);
     div.addEventListener('mousedown', this.mousedown);
     div.addEventListener('mouseup',  this.mouseup);
@@ -56,9 +58,10 @@ export default class Select extends React.Component {
   crop_green()
   {
 
-    this.rect.push(new Rectangle('green'));
+    this.rect.push(new Rectangle('green','correct'));
     this.counter++;
     var div = document.getElementById('image');
+    this.rect[this.rect.length-1].image=div.children[0].getAttribute('src');
     div.appendChild(this.rect[this.rect.length-1].rect);
     div.addEventListener('mousedown', this. mousedown);
     div.addEventListener('mouseup', this. mouseup);
@@ -80,8 +83,24 @@ export default class Select extends React.Component {
     }
     doneImage()
     {
-      console.log(this.rect);
-      console.log(this.counter);
+      let list=this.state.list_edited;
+      list.push(<Done_Image list={[...this.rect]} />);
+      this.setState({
+        list_edited:list
+      });
+      let i=this.rect.length;
+      for(let j=0;j<i;j++)
+      {
+        console.log(j+"  ,"+i);
+        var elem=this.rect[j].rect;
+          document.getElementById("image").removeChild(elem);
+      }
+      for(let j=0;j<i;j++)
+      {
+        this.rect.pop();
+      }
+      let image=document.getElementById('image').children[0];
+      document.getElementById("image").removeChild(image);
     }
     reset()
     {
@@ -154,6 +173,9 @@ export default class Select extends React.Component {
             </div>
             <div id="editat">
               <div id="edited-images">
+                {
+                  this.state.list_edited
+                }
                 </div>
                   <div id="submit" class="btn btn-success">
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-play-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
